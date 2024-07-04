@@ -36,13 +36,6 @@ The application is divided into the following microservices, each handling a spe
 
 ### Backend
 - **Java Spring Boot**: For developing scalable and maintainable microservices.
-- **Spring Cloud**: For managing microservices and service discovery.
-- **Spring Security**: For securing the application and managing authentication and authorization.
-- **Spring Data JPA**: For database operations and management.
-- **Hibernate**: As the ORM tool for managing database interactions.
-- **MySQL**: As the relational database for storing data.
-- **RabbitMQ**: For messaging between microservices.
-- **Docker**: For containerizing the application and ensuring consistency across different environments.
 
 ### Additional Tools
 - **Git**: For version control.
