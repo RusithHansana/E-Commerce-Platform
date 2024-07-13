@@ -1,0 +1,16 @@
+{
+  "name": "e-commerce-platform",
+  "version": "1.0.0",
+  "description": "E-Commerce Platform for university project",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "mvn spring-boot:run",
+    "start:frontend": "react-scripts start"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
