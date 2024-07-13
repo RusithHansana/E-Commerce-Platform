@@ -62,10 +62,10 @@ To get a local copy up and running, follow these steps:
 2.Backend Setup:
 Navigate to the backend directory and build the project:
 
-    ```bash
+```bash
     cd backend
     mvn clean install
-
+```
 3.Frontend Setup:
 Navigate to the frontend directory and install the dependencies:
 
