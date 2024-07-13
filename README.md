@@ -57,46 +57,20 @@ To get a local copy up and running, follow these steps:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/ecommerce-platform.git
-   cd ecommerce-platform
-   
-Navigate to the backend directory and build the project:
-2.**Backend Setup:**
-    ```bash
-        cd backend
-        mvn clean install
+   cd e-commerce-platform
+
+### Backend Setup
+
+2. **Navigate to the backend directory and build the project:**
+   ```bash
+   cd backend/ecommerce_api
+   mvn clean install
+
+## Frontend Setup
+
+3. **Navigate to the frontend directory and install the dependencies:**
+   ```bash
+   cd frontend
+   npm install # or yarn install
 
 
-3.**Frontend Setup:**
-Navigate to the frontend directory and install the dependencies:
-
-bash
-Copy code
-cd frontend
-npm install
-# or
-yarn install
-Running the Application
-Using Concurrently (Recommended)
-To run both the backend and frontend concurrently, you can use the concurrently package. This setup allows you to start both servers with a single command.
-
-Install Concurrently:
-
-bash
-Copy code
-npm install -g concurrently
-Add the following scripts to your root package.json:
-
-json
-Copy code
-{
-  "scripts": {
-    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "start:backend": "cd backend && mvn spring-boot:run",
-    "start:frontend": "cd frontend && npm start"
-  }
-}
-Run the application:
-
-bash
-Copy code
-npm start
