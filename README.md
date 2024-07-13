@@ -42,9 +42,61 @@ The application is divided into the following microservices, each handling a spe
 - **Maven**: For project build and dependency management.
 - **Postman**: For API testing and documentation.
 
+## Getting Started
+
 ## Prerequisites
 - Java 11+
 - Node.js 14+
 - MySQL
-- Docker
 - Maven
+
+### Cloning the Repository
+
+To get a local copy up and running, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ecommerce-platform.git
+   cd ecommerce-platform
+   
+2.Backend Setup:
+Navigate to the backend directory and build the project:
+
+    ```bash
+    cd backend
+    mvn clean install
+
+3.Frontend Setup:
+Navigate to the frontend directory and install the dependencies:
+
+bash
+Copy code
+cd frontend
+npm install
+# or
+yarn install
+Running the Application
+Using Concurrently (Recommended)
+To run both the backend and frontend concurrently, you can use the concurrently package. This setup allows you to start both servers with a single command.
+
+Install Concurrently:
+
+bash
+Copy code
+npm install -g concurrently
+Add the following scripts to your root package.json:
+
+json
+Copy code
+{
+  "scripts": {
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+    "start:backend": "cd backend && mvn spring-boot:run",
+    "start:frontend": "cd frontend && npm start"
+  }
+}
+Run the application:
+
+bash
+Copy code
+npm start
