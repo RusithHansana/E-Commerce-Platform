@@ -54,19 +54,19 @@ The application is divided into the following microservices, each handling a spe
 
 To get a local copy up and running, follow these steps:
 
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/ecommerce-platform.git
    cd ecommerce-platform
    
-2.Backend Setup:
 Navigate to the backend directory and build the project:
+2.**Backend Setup:**
+    ```bash
+        cd backend
+        mvn clean install
 
-```bash
-    cd backend
-    mvn clean install
-```
-3.Frontend Setup:
+
+3.**Frontend Setup:**
 Navigate to the frontend directory and install the dependencies:
 
 bash
