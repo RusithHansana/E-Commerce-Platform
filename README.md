@@ -73,4 +73,3 @@ To get a local copy up and running, follow these steps:
    cd frontend
    npm install # or yarn install
 
-
