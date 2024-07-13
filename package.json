@@ -4,10 +4,9 @@
   "description": "E-Commerce Platform for university project",
   "main": "index.js",
   "scripts": {
-    "dev" : "cd frontend/e-commerce-frontend && npm run dev",
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
-    "start:backend": "mvn spring-boot:run",
-    "start:frontend": "npm run dev"
+    "start:backend": "cd backend/ecommerce_api && mvn spring-boot:run",
+    "start:frontend": "cd frontend/e-commerce-frontend && npm run dev"
   },
   "author": "",
   "license": "ISC",
