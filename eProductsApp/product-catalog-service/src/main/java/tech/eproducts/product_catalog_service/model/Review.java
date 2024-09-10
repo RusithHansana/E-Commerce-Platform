@@ -20,6 +20,7 @@ public class Review {
     @Id // Marks this field as the primary key in the MongoDB document
     private String id; // Unique identifier for the review
 
+    private int userId;
     private String productId; // Reference to the ID of the product being reviewed
 
     private String userName;

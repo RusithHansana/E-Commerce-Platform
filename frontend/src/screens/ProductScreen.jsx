@@ -11,7 +11,7 @@ import {
   Button,
   Form,
 } from "react-bootstrap";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash, FaEdit } from "react-icons/fa";
 import { toast } from "react-toastify";
 import Rating from "../components/Rating";
 import Loader from "../components/Loader";
@@ -21,7 +21,8 @@ import Meta from "../components/Meta";
 import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
-  useDeleteReviewMutation
+  useDeleteReviewMutation,
+  useUpdateReviewMutation
 } from "../slices/productApiSlice";
 
 const ProductScreen = () => {
@@ -34,6 +35,7 @@ const ProductScreen = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
   const [deletingReviewId, setDeletingReviewId] = useState(null);
+  const [editingReviewId, setEditingReviewId] = useState(null);
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
@@ -53,25 +55,40 @@ const ProductScreen = () => {
     useCreateReviewMutation();
 
   const [deleteReview] = useDeleteReviewMutation();
+  const [updateReview] = useUpdateReviewMutation();
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
-      await createReview({
-        userName: userInfo.name,
-        productId,
-        rating,
-        comment,
-      }).unwrap();
+      if (editingReviewId) {
+        await updateReview({
+          reviewId: editingReviewId,
+          rating,
+          comment,
+        }).unwrap();
+        toast.success("Review updated successfully");
+        setEditingReviewId(null);
+      } else {
+        await createReview({
+          userId: userInfo._id,
+          userName: userInfo.name,
+          productId,
+          rating,
+          comment,
+        }).unwrap();
+        toast.success("Review added successfully");
+      }
       refetch();
-      toast.success("Review created successfully");
       setRating(0);
       setComment("");
     } catch (err) {
       toast.error(err?.data?.message || err.error);
     }
   };
+
+  if (product)
+    console.log(product.reviews[0]);
 
   const handleDeleteReview = async (reviewId) => {
     if (window.confirm("Are you sure you want to delete this review?")) {
@@ -86,6 +103,12 @@ const ProductScreen = () => {
         setDeletingReviewId(null);
       }
     }
+  };
+
+  const handleEditReview = (review) => {
+    setEditingReviewId(review.id);
+    setRating(review.rating);
+    setComment(review.comment);
   };
 
   return (
@@ -195,18 +218,29 @@ const ProductScreen = () => {
                         <p>{review.createdAt.substring(0, 10)}</p>
                         <p>{review.comment}</p>
                       </Col>
-                      {userInfo && userInfo.isAdmin && (
+                      {userInfo && (userInfo._id === review.userId || userInfo.isAdmin) && (
                         <Col xs="auto">
                           {deletingReviewId === review.id ? (
                             <Loader />
                           ) : (
-                            <Button
-                              variant="danger"
-                              className="btn-sm align-items-center"
-                              onClick={() => handleDeleteReview(review.id)}
-                            >
-                              <FaTrash style={{ color: "white" }} />
-                            </Button>
+                            <>
+                              <Button
+                                variant="danger"
+                                className="btn-sm align-items-center me-2"
+                                onClick={() => handleDeleteReview(review.id)}
+                              >
+                                <FaTrash style={{ color: "white" }} />
+                              </Button>
+                              {userInfo._id === review.userId && (
+                                <Button
+                                  variant="primary"
+                                  className="btn-sm align-items-center"
+                                  onClick={() => handleEditReview(review)}
+                                >
+                                  <FaEdit style={{ color: "white" }} />
+                                </Button>
+                              )}
+                            </>
                           )}
                         </Col>
                       )}
@@ -214,7 +248,7 @@ const ProductScreen = () => {
                   </ListGroup.Item>
                 ))}
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
+                  <h2>{editingReviewId ? 'Edit Review' : 'Write a Customer Review'}</h2>
 
                   {loadingProductReview && <Loader />}
 
@@ -251,8 +285,21 @@ const ProductScreen = () => {
                         type="submit"
                         variant="primary"
                       >
-                        Submit
+                        {editingReviewId ? 'Update' : 'Submit'}
                       </Button>
+                      {editingReviewId && (
+                        <Button
+                          variant="secondary"
+                          onClick={() => {
+                            setEditingReviewId(null);
+                            setRating(0);
+                            setComment('');
+                          }}
+                          className="ms-2"
+                        >
+                          Cancel
+                        </Button>
+                      )}
                     </Form>
                   ) : (
                     <Message>

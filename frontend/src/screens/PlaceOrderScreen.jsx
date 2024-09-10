@@ -17,7 +17,7 @@ const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart);
 
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
-  const [redirectToPayments, { isPaymentLoading, paymentError }] = useRedirectToPaymentQuery();
+  // const [redirectToPayments, { isPaymentLoading, paymentError }] = useRedirectToPaymentQuery();
 
   useEffect(() => {
     if (!cart.shippingAddress.address) {
@@ -30,7 +30,7 @@ const PlaceOrderScreen = () => {
   const dispatch = useDispatch();
   const placeOrderHandler = async () => {
     try {
-      const res = await createOrder({
+      await createOrder({
         products: cart.cartItems,
         totalPrice: cart.totalPrice,
         status: "pending",
