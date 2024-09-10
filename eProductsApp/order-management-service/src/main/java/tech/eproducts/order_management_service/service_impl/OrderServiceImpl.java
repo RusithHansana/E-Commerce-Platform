@@ -30,6 +30,11 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findAll();
     }
 
+    @Override
+    public List<Order> getOrdersByUserId(int userId) {
+        return orderRepository.findByUserId(userId);
+    }
+
     /**
      * Retrieves an order by its ID.
      *
@@ -54,6 +59,7 @@ public class OrderServiceImpl implements OrderService {
                 order.getProducts(),
                 order.getTotalPrice(),
                 order.getStatus(),
+                order.getUserId(),
                 order.getUser(),
                 order.getShippingAddress(),
                 order.getPaymentMethod(),

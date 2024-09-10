@@ -34,6 +34,7 @@ const PlaceOrderScreen = () => {
         products: cart.cartItems,
         totalPrice: cart.totalPrice,
         status: "pending",
+        userId: userinfo._id,
         user: userinfo.name,
         shippingAddress: cart.shippingAddress.country,
         paymentMethod: cart.paymentMethod,

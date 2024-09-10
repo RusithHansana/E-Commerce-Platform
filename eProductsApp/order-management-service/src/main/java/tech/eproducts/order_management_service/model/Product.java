@@ -33,7 +33,7 @@ public class Product {
     private Double rating = 0.0; // The average rating of the product, initialized to 0.0
     private Integer numReviews = 0; // The number of reviews for the product, initialized to 0
     private Double price = 0.0; // The price of the product, initialized to 0.0
-    private Integer countInStock = 0; // The number of items available in stock, initialized to 0
+    private Integer qty = 0; // The number of items available in stock, initialized to 0
 
     @CreatedDate // Automatically populated with the current date when the product is created
     private LocalDateTime createdAt; // Timestamp for when the product was created

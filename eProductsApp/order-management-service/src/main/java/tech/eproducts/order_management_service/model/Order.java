@@ -32,6 +32,7 @@ public class Order {
     private Double totalPrice; // Total price of the order
     private String status; // Status of the order (e.g., "Pending", "Shipped", "Delivered")
 
+    private int userId;
     private String user;
     private String shippingAddress; // Shipping address for the order
     private String paymentMethod; // Payment method used for the order
@@ -45,10 +46,11 @@ public class Order {
     @LastModifiedDate // Automatically updated with the current date when the order is modified
     private LocalDateTime updatedAt; // Timestamp for when the order was last updated
 
-    public Order(List<Product> products, Double totalPrice, String status, String user, String shippingAddress, String paymentMethod, Double itemsPrice, Double shippingPrice, Double taxPrice) {
+    public Order(List<Product> products, Double totalPrice, String status, int userId, String user, String shippingAddress, String paymentMethod, Double itemsPrice, Double shippingPrice, Double taxPrice) {
         this.products = products;
         this.totalPrice = totalPrice;
         this.status = status;
+        this.userId = userId;
         this.user = user;
         this.shippingAddress = shippingAddress;
         this.paymentMethod = paymentMethod;

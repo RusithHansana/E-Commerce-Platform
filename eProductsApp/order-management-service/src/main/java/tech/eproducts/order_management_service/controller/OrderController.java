@@ -31,6 +31,12 @@ public class OrderController {
         return ResponseEntity.ok(orders); // Return 200 OK with the list of orders
     }
 
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Order>> getOrdersByUserId(@PathVariable int id){
+        List<Order> orders = orderService.getOrdersByUserId(id);
+        return  ResponseEntity.ok(orders);
+    }
+
     /**
      * Retrieves a specific order by its ID.
      *

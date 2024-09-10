@@ -28,6 +28,14 @@ public interface OrderService {
     ResponseEntity<Order> getOrderById(String id);
 
     /**
+     * Retrieves all orders for a specific user.
+     *
+     * @param userId The ID of the user whose orders to retrieve
+     * @return List of orders belonging to the user
+     */
+    List<Order> getOrdersByUserId(int userId);
+
+    /**
      * Creates a new order.
      *
      * @param order The order object to create
