@@ -1,9 +1,9 @@
-package tech.eproducts.product_catalog_service.security;
+package tech.eproducts.order_management_service.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import tech.eproducts.product_catalog_service.model.User;
+import tech.eproducts.order_management_service.model.User;
 
 import java.util.Collection;
 import java.util.Collections;

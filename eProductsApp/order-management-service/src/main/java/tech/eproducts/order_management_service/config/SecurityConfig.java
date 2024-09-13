@@ -1,4 +1,4 @@
-package tech.eproducts.product_catalog_service.config;
+package tech.eproducts.order_management_service.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,8 +15,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import tech.eproducts.product_catalog_service.security.JwtAuthenticationEntryPoint;
-import tech.eproducts.product_catalog_service.security.JwtAuthenticationFilter;
+import tech.eproducts.order_management_service.security.JwtAuthenticationEntryPoint;
+import tech.eproducts.order_management_service.security.JwtAuthenticationFilter;
 
 /**
  * Configuration class for security settings in the product catalog service.
@@ -94,7 +94,7 @@ public class SecurityConfig {
         .sessionManagement(
             sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-            .requestMatchers("/api/products/admin/**").hasRole("ADMIN")
+                .requestMatchers("/api/orders").authenticated()
             .anyRequest().permitAll());
 
     http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

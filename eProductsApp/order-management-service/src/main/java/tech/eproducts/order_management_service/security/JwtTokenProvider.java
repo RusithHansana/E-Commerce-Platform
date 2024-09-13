@@ -1,4 +1,4 @@
-package tech.eproducts.product_catalog_service.security;
+package tech.eproducts.order_management_service.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import tech.eproducts.product_catalog_service.model.User;
+import tech.eproducts.order_management_service.model.User;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;

@@ -1,4 +1,4 @@
-package tech.eproducts.product_catalog_service.security;
+package tech.eproducts.order_management_service.security;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

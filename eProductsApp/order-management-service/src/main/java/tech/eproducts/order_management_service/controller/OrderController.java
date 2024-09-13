@@ -73,7 +73,7 @@ public class OrderController {
      * @param order The updated order object
      * @return ResponseEntity containing the updated order if successful, or a 404 Not Found response
      */
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable String id, @RequestBody Order order) {
         if (id == null || id.isEmpty() || order == null) {
             return ResponseEntity.badRequest().build(); // Return 400 Bad Request if ID or order is invalid
@@ -87,7 +87,7 @@ public class OrderController {
      * @param id The ID of the order to delete
      * @return ResponseEntity with 204 No Content if successful, or a 404 Not Found response
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable String id) {
         if (id == null || id.isEmpty()) {
             return ResponseEntity.badRequest().build(); // Return 400 Bad Request if ID is invalid

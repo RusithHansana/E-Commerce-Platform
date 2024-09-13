@@ -1,4 +1,4 @@
-package tech.eproducts.product_catalog_service.model;
+package tech.eproducts.order_management_service.model;
 
 import jakarta.persistence.*;
 

@@ -1,13 +1,13 @@
-package tech.eproducts.product_catalog_service.service;
+package tech.eproducts.order_management_service.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import tech.eproducts.product_catalog_service.model.User;
-import tech.eproducts.product_catalog_service.repository.UserRepository;
-import tech.eproducts.product_catalog_service.security.UserPrincipal;
+import tech.eproducts.order_management_service.model.User;
+import tech.eproducts.order_management_service.repository.UserRepository;
+import tech.eproducts.order_management_service.security.UserPrincipal;
 
 /**
  * Custom implementation of UserDetailsService for loading user-specific data.

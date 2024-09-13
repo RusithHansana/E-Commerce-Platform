@@ -1,4 +1,4 @@
-package tech.eproducts.product_catalog_service.security;
+package tech.eproducts.order_management_service.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
-import tech.eproducts.product_catalog_service.service.CustomUserDetailsService;
+import tech.eproducts.order_management_service.service.CustomUserDetailsService;
 
 import java.io.IOException;
 
