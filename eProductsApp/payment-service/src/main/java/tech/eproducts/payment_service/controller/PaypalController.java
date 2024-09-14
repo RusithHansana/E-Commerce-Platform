@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -148,6 +147,12 @@ public class PaypalController {
         List<PaymentRecord> paymentRecords = paypalService.getAllPaymentRecords();
         model.addAttribute("payments", paymentRecords);
         return "paymentList";
+    }
+
+    @PostMapping("/payment/delete/{id}")
+    public String deletePayment(@PathVariable Long id) {
+        paypalService.deletePaymentRecord(id);
+        return "redirect:/payments";
     }
 
 }

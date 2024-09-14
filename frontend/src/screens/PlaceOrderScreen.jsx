@@ -30,7 +30,7 @@ const PlaceOrderScreen = () => {
   const dispatch = useDispatch();
   const placeOrderHandler = async () => {
     try {
-      await createOrder({
+      const result = await createOrder({
         products: cart.cartItems,
         totalPrice: cart.totalPrice,
         status: "pending",
@@ -43,6 +43,10 @@ const PlaceOrderScreen = () => {
         taxPrice: cart.taxPrice,
       }).unwrap();
 
+      // Redirect to payment page
+      window.location.href = `http://localhost:8086/${cart.totalPrice}`;
+
+      // The following code will execute after returning from the payment page
       dispatch(clearCartItems());
       toast.success("Order is placed");
     } catch (err) {

@@ -108,10 +108,15 @@ public class PaypalService {
         record.setMethod(paypalPayment.getPayer().getPaymentMethod());
         record.setDescription(paypalPayment.getTransactions().get(0).getDescription());
         record.setStatus(status);
+        record.setPaymentDate(java.time.LocalDateTime.now());
         return paymentRecordRepository.save(record);
     }
 
     public List<PaymentRecord> getAllPaymentRecords() {
         return paymentRecordRepository.findAllByOrderByIdDesc();
+    }
+
+    public void deletePaymentRecord(Long id) {
+        paymentRecordRepository.deleteById(id);
     }
 }

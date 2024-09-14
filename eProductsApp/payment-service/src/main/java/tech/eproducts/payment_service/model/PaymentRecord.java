@@ -1,5 +1,7 @@
 package tech.eproducts.payment_service.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,4 +17,6 @@ public class PaymentRecord {
   private String method;
   private String description;
   private String status;
+  private LocalDateTime paymentDate;
+
 }

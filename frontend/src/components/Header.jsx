@@ -86,6 +86,9 @@ const Header = () => {
                   <LinkContainer to="/admin/orderlist">
                     <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
+                  <NavDropdown.Item href="http://localhost:8086/payments">
+                    Transactions
+                  </NavDropdown.Item>
                 </NavDropdown>
               )}
             </Nav>
