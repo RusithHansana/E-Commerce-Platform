@@ -35,6 +35,19 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
+    updateOrder: builder.mutation({
+      query: (order) => ({
+        url: `${ORDERS_URL}/${order._id}`,
+        method: "PUT",
+        body: order,
+      }),
+    }),
+    deleteOrder: builder.mutation({
+      query: (orderId) => ({
+        url: `${ORDERS_URL}/${orderId}`,
+        method: "DELETE",
+      }),
+    }),
     getOrders: builder.query({
       query: () => ({
         url: ORDERS_URL,

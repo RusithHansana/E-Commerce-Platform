@@ -15,6 +15,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementation of the ReviewService interface, providing methods to manage reviews for products.
+ */
 @Service
 @RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
@@ -25,11 +28,22 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private ProductRepository productRepository;
 
+    /**
+     * Retrieves all reviews from the repository.
+     *
+     * @return a list of all reviews.
+     */
     @Override
     public List<Review> getAllReviews() {
         return reviewRepository.findAll();
     }
 
+    /**
+     * Retrieves a review by its ID.
+     *
+     * @param id the ID of the review to retrieve.
+     * @return a ResponseEntity containing the review if found, or a 404 Not Found response if not.
+     */
     @Override
     public ResponseEntity<Review> getReviewById(String id) {
         Optional<Review> review = reviewRepository.findById(id);
@@ -37,6 +51,13 @@ public class ReviewServiceImpl implements ReviewService {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    /**
+     * Adds a new review to a product.
+     *
+     * @param newReview the review to be added.
+     * @return the added review.
+     * @throws RuntimeException if the associated product is not found.
+     */
     @Override
     public Review addReviewToProduct(Review newReview) {
         // Find the product by ID using the repository
@@ -58,6 +79,13 @@ public class ReviewServiceImpl implements ReviewService {
         return review;
     }
 
+    /**
+     * Updates an existing review by its ID.
+     *
+     * @param id     the ID of the review to update.
+     * @param review the updated review data.
+     * @return a ResponseEntity containing the updated review if successful, or a 404 Not Found response if the review does not exist.
+     */
     @Override
     public ResponseEntity<Review> updateReview(String id, Review review) {
         // Find the existing review by ID
@@ -98,6 +126,12 @@ public class ReviewServiceImpl implements ReviewService {
         return ResponseEntity.ok(updatedReview);
     }
 
+    /**
+     * Deletes a review by its ID.
+     *
+     * @param id the ID of the review to delete.
+     * @return a ResponseEntity with a 204 No Content response if successful, or a 404 Not Found response if the review does not exist.
+     */
     @Override
     public ResponseEntity<Void> deleteReview(String id) {
         // Find the existing review by ID
